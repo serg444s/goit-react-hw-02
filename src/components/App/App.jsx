@@ -3,6 +3,7 @@ import { useState } from "react";
 import Description from "../Description/Description";
 import Options from "../Options/Options";
 import Feedback from "../Feedback/Feedback";
+import Notification from "../Notification/Notification";
 
 function App() {
   const [state, setState] = useState({
@@ -18,11 +19,13 @@ function App() {
     });
   };
 
+  const totalFeedback = state.good + state.neutral + state.bad;
+
   return (
     <div>
       <Description />
-      <Options callback={updateFeedback} />
-      <Feedback data={state} />
+      <Options callback={updateFeedback} totalFeedback={totalFeedback} />
+      {totalFeedback > 0 ? <Feedback data={state} /> : <Notification />}
     </div>
   );
 }
