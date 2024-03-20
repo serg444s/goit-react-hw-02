@@ -20,12 +20,21 @@ function App() {
   };
 
   const totalFeedback = state.good + state.neutral + state.bad;
+  const positiveFeedback = Math.round((state.good / totalFeedback) * 100);
 
   return (
     <div>
       <Description />
       <Options callback={updateFeedback} totalFeedback={totalFeedback} />
-      {totalFeedback > 0 ? <Feedback data={state} /> : <Notification />}
+      {totalFeedback > 0 ? (
+        <Feedback
+          data={state}
+          totalFeedback={totalFeedback}
+          positiveFeedback={positiveFeedback}
+        />
+      ) : (
+        <Notification />
+      )}
     </div>
   );
 }
