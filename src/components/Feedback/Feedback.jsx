@@ -12,11 +12,10 @@ const Feedback = ({ data, totalFeedback, positiveFeedback }) => {
       <p className={css.text}>
         Bad: <span className={css.bad}>{data.bad}</span>
       </p>
-      {totalFeedback > 0 && <p>Total: {totalFeedback}</p> && (
-        <p className={css.text}>
-          Positive: <span className={css.good}>{positiveFeedback}%</span>
-        </p>
-      )}
+      <p>Total: {totalFeedback}</p>
+      <p className={css.text}>
+        Positive: <span className={css.good}>{positiveFeedback}%</span>
+      </p>
     </div>
   );
 };

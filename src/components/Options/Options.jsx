@@ -1,6 +1,6 @@
 import css from "./Options.module.css";
 
-const Options = ({ callback, totalFeedback }) => {
+const Options = ({ callback, totalFeedback, reset }) => {
   return (
     <div className={css.container}>
       <button className={css.btn} onClick={() => callback("good")}>
@@ -13,7 +13,7 @@ const Options = ({ callback, totalFeedback }) => {
         Bad
       </button>
       {totalFeedback > 0 ? (
-        <button className={css.btn} onClick={() => callback("reset")}>
+        <button className={css.btn} onClick={reset}>
           Reset
         </button>
       ) : (

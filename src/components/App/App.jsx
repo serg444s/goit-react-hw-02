@@ -20,18 +20,18 @@ function App() {
   });
 
   const updateFeedback = (feedbackType) => {
-    if (feedbackType === "reset") {
-      setState({
-        good: 0,
-        neutral: 0,
-        bad: 0,
-      });
-    } else {
-      setState({
-        ...state,
-        [feedbackType]: state[feedbackType] + 1,
-      });
-    }
+    setState({
+      ...state,
+      [feedbackType]: state[feedbackType] + 1,
+    });
+  };
+
+  const resetFeedback = () => {
+    setState({
+      good: 0,
+      neutral: 0,
+      bad: 0,
+    });
   };
 
   useEffect(() => {
@@ -44,7 +44,11 @@ function App() {
   return (
     <div>
       <Description />
-      <Options callback={updateFeedback} totalFeedback={totalFeedback} />
+      <Options
+        callback={updateFeedback}
+        totalFeedback={totalFeedback}
+        reset={resetFeedback}
+      />
       {totalFeedback > 0 ? (
         <Feedback
           data={state}
