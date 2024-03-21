@@ -13,10 +13,18 @@ function App() {
   });
 
   const updateFeedback = (feedbackType) => {
-    setState({
-      ...state,
-      [feedbackType]: state[feedbackType] + 1,
-    });
+    if (feedbackType === "reset") {
+      setState({
+        good: 0,
+        neutral: 0,
+        bad: 0,
+      });
+    } else {
+      setState({
+        ...state,
+        [feedbackType]: state[feedbackType] + 1,
+      });
+    }
   };
 
   const totalFeedback = state.good + state.neutral + state.bad;

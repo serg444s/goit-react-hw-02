@@ -12,7 +12,13 @@ const Options = ({ callback, totalFeedback }) => {
       <button className={css.btn} onClick={() => callback("bad")}>
         Bad
       </button>
-      {totalFeedback > 0 ? <button className={css.btn}>Reset</button> : ""}
+      {totalFeedback > 0 ? (
+        <button className={css.btn} onClick={() => callback("reset")}>
+          Reset
+        </button>
+      ) : (
+        ""
+      )}
     </div>
   );
 };
